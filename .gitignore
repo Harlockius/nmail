@@ -1,0 +1,12 @@
+# docs (internal planning)
+.docs/
+
+# Go binary
+nmail
+
+# Build artifacts
+*.test
+*.out
+
+# OS
+.DS_Store
