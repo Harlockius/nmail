@@ -12,9 +12,9 @@
   "dispatch_drain": {
     "enabled": true,
     "max_per_tick": 5,
-    "run_count": 496,
+    "run_count": 2225,
     "leader_only": true,
-    "last_tick_at": "2026-03-17T15:13:59.931Z",
+    "last_tick_at": "2026-03-17T15:21:23.606Z",
     "last_result": {
       "processed": 0,
       "skipped": 0,
@@ -24,11 +24,11 @@
   },
   "leader_nudge": {
     "enabled": true,
-    "run_count": 496,
+    "run_count": 2225,
     "leader_only": true,
     "stale_threshold_ms": 180000,
-    "precomputed_leader_stale": false,
-    "last_tick_at": "2026-03-17T15:13:59.932Z",
+    "precomputed_leader_stale": true,
+    "last_tick_at": "2026-03-17T15:21:23.606Z",
     "last_error": null
   },
   "ralph_continue_steer": {
@@ -36,7 +36,7 @@
     "cadence_ms": 60000,
     "message": "Ralph loop active continue",
     "active": false,
-    "last_state_check_at": "2026-03-17T15:13:59.936Z",
+    "last_state_check_at": "2026-03-17T15:21:23.606Z",
     "last_sent_at": "",
     "last_reason": "cleared",
     "last_error": null,
