@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"github.com/harlock/nmail/internal/config"
 	imapclient "github.com/harlock/nmail/internal/imap"
 	"github.com/harlock/nmail/internal/output"
 	"github.com/spf13/cobra"
@@ -14,12 +13,8 @@ var inboxCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		limit, _ := cmd.Flags().GetInt("limit")
 
-		cfg, err := config.Load()
-		if err != nil {
-			output.Error(err.Error())
-			return nil
-		}
-		account, err := cfg.Default()
+		accountEmail, _ := cmd.Flags().GetString("account")
+		account, err := resolveAccount(accountEmail)
 		if err != nil {
 			output.Error(err.Error())
 			return nil

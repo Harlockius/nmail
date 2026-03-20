@@ -39,5 +39,7 @@ func init() {
 	rootCmd.AddCommand(configCmd)
 	rootCmd.AddCommand(inboxCmd)
 	rootCmd.AddCommand(readCmd)
+	rootCmd.AddCommand(searchCmd)
+	rootCmd.AddCommand(watchCmd)
 	rootCmd.AddCommand(sendCmd)
 }

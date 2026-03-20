@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/harlock/nmail/internal/config"
 	imapclient "github.com/harlock/nmail/internal/imap"
 	"github.com/harlock/nmail/internal/output"
 	"github.com/spf13/cobra"
@@ -21,12 +20,8 @@ var readCmd = &cobra.Command{
 			return nil
 		}
 
-		cfg, err := config.Load()
-		if err != nil {
-			output.Error(err.Error())
-			return nil
-		}
-		account, err := cfg.Default()
+		accountEmail, _ := cmd.Flags().GetString("account")
+		account, err := resolveAccount(accountEmail)
 		if err != nil {
 			output.Error(err.Error())
 			return nil

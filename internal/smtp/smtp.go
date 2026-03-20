@@ -7,6 +7,7 @@ import (
 	"mime"
 	"net"
 	"net/smtp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -15,7 +16,7 @@ import (
 
 // Send sends an email via SMTP (STARTTLS).
 func Send(account config.Account, to, subject, body string) error {
-	addr := fmt.Sprintf("%s:%d", account.SMTPHost, account.SMTPPort)
+	addr := net.JoinHostPort(account.SMTPHost, strconv.Itoa(account.SMTPPort))
 
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
