@@ -50,10 +50,10 @@ nmail send --to friend@naver.com --subject "긴 메일" --body-file ./message.tx
 | Phase | Status |
 |-------|--------|
 | Phase 1: Scaffolding | ✅ Done |
-| Phase 2: Config | 🔧 In progress |
-| Phase 3: Inbox & Read | 📋 Planned |
-| Phase 4: Send | 📋 Planned |
-| Phase 5: ClewHub Skill | 📋 Planned |
+| Phase 2: Config | ✅ Done |
+| Phase 3: Inbox & Read | ✅ Done |
+| Phase 4: Send | ✅ Done |
+| Phase 5: ClewHub Skill | ✅ SKILL.md 작성 완료 — 연동 테스트 후 등록 |
 
 ## License
 
