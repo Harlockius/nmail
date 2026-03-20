@@ -3,7 +3,6 @@ package cmd
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"os"
 	"os/signal"
@@ -49,7 +48,7 @@ var watchCmd = &cobra.Command{
 		} else {
 			err = cl.WatchIDLE(ctx, handler)
 		}
-		if err != nil && !errors.Is(err, context.Canceled) {
+		if err != nil {
 			output.Error(err.Error())
 		}
 		return nil

@@ -23,6 +23,7 @@ var searchCmd = &cobra.Command{
 		beforeValue, _ := cmd.Flags().GetString("before")
 		unseen, _ := cmd.Flags().GetBool("unseen")
 		limit, _ := cmd.Flags().GetInt("limit")
+		accountEmail, _ := cmd.Flags().GetString("account")
 
 		since, err := parseDateFlag(sinceValue)
 		if err != nil {
@@ -34,13 +35,12 @@ var searchCmd = &cobra.Command{
 			output.Error(err.Error())
 			return nil
 		}
-
-		cfg, err := config.Load()
-		if err != nil {
-			output.Error(err.Error())
+		if limit < 0 {
+			output.Error("--limit must be >= 0")
 			return nil
 		}
-		account, err := cfg.Default()
+
+		account, err := resolveAccount(accountEmail)
 		if err != nil {
 			output.Error(err.Error())
 			return nil
