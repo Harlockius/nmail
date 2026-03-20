@@ -57,6 +57,15 @@ nmail send --to friend@naver.com --subject "긴 메일" --body-file ./message.tx
 # Manage accounts
 nmail config list
 nmail config remove --email old@naver.com
+
+# Search
+nmail search --from "socra"
+nmail search --subject "코딩" --since 2026-03-01
+nmail search --unseen --limit 10
+
+# Watch for new mail (polling, 5s interval)
+nmail watch --poll 5
+nmail watch --poll 5 --pretty
 ```
 
 ## Agent Usage
@@ -80,7 +89,8 @@ nmail send --to <from> --subject "Re: <subject>" --body "reply"
 | Phase 3: Inbox & Read | ✅ |
 | Phase 4: Send | ✅ |
 | Phase 5: ClewHub + Homebrew | ✅ |
-| Phase 6: Search, Daum, Attachments | 🔜 |
+| Phase 5.5: Search & Watch | ✅ |
+| Phase 6: Daum, Attachments | 🔜 |
 
 ## Contributing
 

@@ -6,7 +6,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/harlock/nmail/internal/config"
 	"github.com/harlock/nmail/internal/output"
 	nmailsmtp "github.com/harlock/nmail/internal/smtp"
 	"github.com/spf13/cobra"
@@ -42,12 +41,8 @@ var sendCmd = &cobra.Command{
 			return nil
 		}
 
-		cfg, err := config.Load()
-		if err != nil {
-			output.Error(err.Error())
-			return nil
-		}
-		account, err := cfg.Default()
+		accountEmail, _ := cmd.Flags().GetString("account")
+		account, err := resolveAccount(accountEmail)
 		if err != nil {
 			output.Error(err.Error())
 			return nil

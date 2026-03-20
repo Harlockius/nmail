@@ -61,6 +61,33 @@ nmail send --to friend@naver.com --subject "제목" --body-file ./message.txt
 echo "파이프로 보내기" | nmail send --to friend@naver.com --subject "제목" --body-file -
 ```
 
+### 메일 검색
+```bash
+# 보낸사람으로 검색
+nmail search --from "socra"
+
+# 조합 검색
+nmail search --subject "코딩" --since 2026-03-01 --limit 10
+
+# 안 읽은 것만
+nmail search --unseen
+
+# 본문+제목 전체 검색
+nmail search --text "키워드"
+```
+
+### 새 메일 감시
+```bash
+# 폴링 모드 (5초 간격) — JSON line 출력
+nmail watch --poll 5
+
+# 사람용
+nmail watch --poll 5 --pretty
+# 📬 New: [제목] from 보낸사람
+```
+
+> ⚠️ 네이버 IMAP은 IDLE 미지원. `--poll` 사용 필수.
+
 ### 계정 관리
 ```bash
 nmail config list          # 계정 목록
@@ -74,6 +101,22 @@ nmail config remove --email <email>  # 계정 삭제
 ```bash
 nmail inbox --limit 5
 # → JSON 파싱 → is_read: false인 것만 필터 → read로 본문 확인 → 요약
+```
+
+### 메일 검색
+```bash
+nmail search --from "socra" --since 2026-03-01
+# → JSON 파싱 → 원하는 메일 찾기
+```
+
+### 실시간 감시 (OpenClaw 연동)
+```bash
+# watch 출력을 openclaw system event로 파이프
+nmail watch --poll 10 | while IFS= read -r line; do
+  subj=$(echo "$line" | jq -r '.subject')
+  from=$(echo "$line" | jq -r '.from')
+  openclaw system event --text "📬 새 메일: $subj (from: $from)" --mode now
+done
 ```
 
 ### 메일 답장
