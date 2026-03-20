@@ -9,12 +9,20 @@
 - 🇰🇷 **Korean email first** — Naver, Daum presets, EUC-KR auto-decode
 - 🤖 **Agent-first** — JSON output by default, `--pretty` for humans
 - 📦 **Single binary** — Go, zero dependencies at runtime
-- 🔌 **OpenClaw skill** — Install via ClewHub
+- 🔌 **OpenClaw skill** — Install via [ClewHub](https://clawhub.ai)
 
 ## Installation
 
 ```bash
-# Coming soon: brew install harlock/tap/nmail
+# Homebrew (macOS / Linux)
+brew tap Harlockius/nmail
+brew install nmail
+
+# Go install
+go install github.com/Harlockius/nmail@latest
+
+# OpenClaw agents
+clawhub install nmail
 ```
 
 ## Setup
@@ -24,12 +32,14 @@
 nmail config add --provider naver --email you@naver.com --password <app-password>
 ```
 
-> **App password:** Naver 계정 → 보안설정 → 2단계 인증 → 애플리케이션 비밀번호 생성
+> **App password 발급:** 네이버 → [내정보](https://nid.naver.com/user2/help/myInfoV2) → 보안설정 → 2단계 인증 설정 → 애플리케이션 비밀번호 생성
+>
+> **IMAP 활성화:** 네이버 메일 → 환경설정 → POP3/IMAP 설정 → IMAP/SMTP 사용함
 
 ## Usage
 
 ```bash
-# List inbox (JSON, default)
+# List inbox (JSON)
 nmail inbox --limit 20
 
 # Human-readable
@@ -43,17 +53,38 @@ nmail send --to friend@naver.com --subject "안녕" --body "잘 지내?"
 
 # Send from file
 nmail send --to friend@naver.com --subject "긴 메일" --body-file ./message.txt
+
+# Manage accounts
+nmail config list
+nmail config remove --email old@naver.com
+```
+
+## Agent Usage
+
+```bash
+# Check new mail → summarize unread
+nmail inbox --limit 10
+# Parse JSON → filter is_read: false → nmail read <id> → summarize
+
+# Reply to a message
+nmail read 42                           # read original
+nmail send --to <from> --subject "Re: <subject>" --body "reply"
 ```
 
 ## Status
 
 | Phase | Status |
 |-------|--------|
-| Phase 1: Scaffolding | ✅ Done |
-| Phase 2: Config | ✅ Done |
-| Phase 3: Inbox & Read | ✅ Done |
-| Phase 4: Send | ✅ Done |
-| Phase 5: ClewHub Skill | ✅ SKILL.md 작성 완료 — 연동 테스트 후 등록 |
+| Phase 1: Scaffolding | ✅ |
+| Phase 2: Config | ✅ |
+| Phase 3: Inbox & Read | ✅ |
+| Phase 4: Send | ✅ |
+| Phase 5: ClewHub + Homebrew | ✅ |
+| Phase 6: Search, Daum, Attachments | 🔜 |
+
+## Contributing
+
+Issues and PRs welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
