@@ -11,3 +11,4 @@ nmail
 # OS
 .DS_Store
 .omx/
+dist/

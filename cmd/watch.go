@@ -14,6 +14,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const idleFallbackPollInterval = 5 * time.Second
+
 var watchCmd = &cobra.Command{
 	Use:   "watch",
 	Short: "Watch inbox for new messages",
@@ -46,7 +48,7 @@ var watchCmd = &cobra.Command{
 		if pollSeconds > 0 {
 			err = cl.WatchPoll(ctx, time.Duration(pollSeconds)*time.Second, handler)
 		} else {
-			err = cl.WatchIDLE(ctx, handler)
+			err = cl.Watch(ctx, idleFallbackPollInterval, handler)
 		}
 		if err != nil {
 			output.Error(err.Error())
