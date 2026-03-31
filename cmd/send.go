@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/harlock/nmail/internal/output"
-	nmailsmtp "github.com/harlock/nmail/internal/smtp"
+	"github.com/Harlockius/nmail/internal/output"
+	nmailsmtp "github.com/Harlockius/nmail/internal/smtp"
 	"github.com/spf13/cobra"
 )
 

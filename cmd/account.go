@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/harlock/nmail/internal/config"
+	"github.com/Harlockius/nmail/internal/config"
 )
 
 func resolveAccount(accountEmail string) (*config.Account, error) {

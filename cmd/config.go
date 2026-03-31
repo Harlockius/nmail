@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/harlock/nmail/internal/config"
-	"github.com/harlock/nmail/internal/output"
+	"github.com/Harlockius/nmail/internal/config"
+	"github.com/Harlockius/nmail/internal/output"
 	"github.com/spf13/cobra"
 )
 

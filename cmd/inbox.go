@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	imapclient "github.com/harlock/nmail/internal/imap"
-	"github.com/harlock/nmail/internal/output"
+	imapclient "github.com/Harlockius/nmail/internal/imap"
+	"github.com/Harlockius/nmail/internal/output"
 	"github.com/spf13/cobra"
 )
 

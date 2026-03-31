@@ -1,4 +1,4 @@
-module github.com/harlock/nmail
+module github.com/Harlockius/nmail
 
 go 1.25.3
 

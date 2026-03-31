@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/harlock/nmail/internal/config"
+	"github.com/Harlockius/nmail/internal/config"
 )
 
 // Send sends an email via SMTP (STARTTLS).
